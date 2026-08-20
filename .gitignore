@@ -1,6 +1,37 @@
+# Byte-compiled / cache
 __pycache__/
-*.pyc
-.ipynb_checkpoints/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
 venv/
-.env
+env/
+
+# Packaging artifacts
 *.egg-info/
+build/
+dist/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment / secrets
+.env
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Editor
+.vim/
+*.swp
+*.swo
+
+# Data (raw datasets — regenerate/download, don't commit)
+data/
+*.csv
+*.parquet
+
+# Results (optional — see note below)
+# results/*.png
