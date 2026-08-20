@@ -10,12 +10,12 @@ behavior, and basic non-mutation/shape guarantees.
 import numpy as np
 import pytest
 
-from svd_solver import svd_solver
-
+from src.svd_solver import svd_solver
 
 # ---------------------------------------------------------------------------
 # Input validation
 # ---------------------------------------------------------------------------
+
 
 def test_raises_on_incompatible_shapes():
     A = np.ones((5, 3))
@@ -34,6 +34,7 @@ def test_accepts_matching_shapes_without_error():
 # ---------------------------------------------------------------------------
 # Basic / exact solves
 # ---------------------------------------------------------------------------
+
 
 def test_identity_matrix_returns_b():
     A = np.eye(4)
@@ -69,6 +70,7 @@ def test_output_shape_matches_number_of_columns():
 # ---------------------------------------------------------------------------
 # Well-conditioned overdetermined / underdetermined vs. reference solver
 # ---------------------------------------------------------------------------
+
 
 def test_overdetermined_matches_numpy_lstsq():
     rng = np.random.default_rng(1)
@@ -114,6 +116,7 @@ def test_solution_minimizes_residual_norm():
 # Rank-deficient matrices (the case TSVD is specifically designed for)
 # ---------------------------------------------------------------------------
 
+
 def test_rank_deficient_matrix_gives_minimum_norm_solution():
     # Column 2 is exactly 2x column 1 -> rank 1, one singular value ~ 0
     A = np.array([[1.0, 2.0], [2.0, 4.0], [3.0, 6.0]])
@@ -150,6 +153,7 @@ def test_zero_matrix_returns_zero_vector():
 # ---------------------------------------------------------------------------
 # rcond truncation behavior
 # ---------------------------------------------------------------------------
+
 
 def _make_matrix_with_singular_values(singular_values, m, n, seed):
     """Builds an (m, n) matrix with a prescribed singular value spectrum."""
@@ -188,6 +192,7 @@ def test_large_rcond_truncates_small_singular_value_component():
 # Non-mutation of inputs
 # ---------------------------------------------------------------------------
 
+
 def test_inputs_are_not_mutated():
     A = np.array([[3.0, 1.0], [1.0, 2.0], [2.0, 2.0]])
     b = np.array([1.0, 2.0, 3.0])
@@ -197,3 +202,7 @@ def test_inputs_are_not_mutated():
 
     np.testing.assert_array_equal(A, A_copy)
     np.testing.assert_array_equal(b, b_copy)
+
+
+if __name__ == "__main__":
+    pytest.main([__file__, "-v"])
