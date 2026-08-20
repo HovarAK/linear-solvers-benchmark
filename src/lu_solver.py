@@ -35,9 +35,7 @@ def lu_solve(A: np.ndarray, b: np.ndarray) -> np.ndarray:
 
     # Verifies the Pre-Requirment on Matrix A: must be square to admit an LU factorization
     if A.shape[0] != A.shape[1]:
-        raise ValueError(
-            f"lu_solve requires a square matrix A, got shape {A.shape}"
-        )
+        raise ValueError(f"lu_solve requires a square matrix A, got shape {A.shape}")
 
     # Verifies the Pre-Requirment on Matrix A and Vector b
     if A.shape[0] != b.shape[0]:
