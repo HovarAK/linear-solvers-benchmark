@@ -37,6 +37,14 @@ def m_gram_schmidt(A: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
     for j in range(n_cols):
         # Normalizes column j; its length becomes the diagonal entry R[j, j]
         R[j, j] = la.norm(Q[:, j])
+
+        if np.isclose(R[j, j], 0):
+            raise ValueError(
+                f"Rank-deficient matrix: column {j} is linearly dependent on "
+                f"the preceding columns (norm ~ 0); m_gram_schmidt requires "
+                f"A to have full column rank."
+            )
+
         Q[:, j] = Q[:, j] / R[j, j]
 
         # Removes the column j component from every remaining column

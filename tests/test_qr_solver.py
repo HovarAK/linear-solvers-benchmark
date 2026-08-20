@@ -125,6 +125,13 @@ def test_qr_reconstructs_original_matrix():
     np.testing.assert_allclose(Q @ R, A, atol=1e-8)
 
 
+def test_rank_deficient_matrix_raises():
+    # Column 2 is exactly 2x column 1 -> rank 1, not full column rank
+    A = np.array([[1.0, 2.0], [2.0, 4.0], [3.0, 6.0]])
+    with pytest.raises(ValueError, match="Rank-deficient"):
+        m_gram_schmidt(A)
+
+
 # ---------------------------------------------------------------------------
 # Non-mutation of inputs
 # ---------------------------------------------------------------------------
