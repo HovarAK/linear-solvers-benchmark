@@ -9,8 +9,7 @@ and basic non-mutation/shape guarantees.
 
 import numpy as np
 import pytest
-
-from qr_solver import m_gram_schmidt, qr_solve
+from src.qr_solver import m_gram_schmidt, qr_solve
 
 # ---------------------------------------------------------------------------
 # Input validation
