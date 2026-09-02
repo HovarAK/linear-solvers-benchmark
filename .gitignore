@@ -29,9 +29,9 @@ Thumbs.db
 *.swo
 
 # Data (raw datasets — regenerate/download, don't commit)
-data/
-*.csv
-*.parquet
+data/**
+!data/**/
+!data/**/.gitkeep
 
 # Results (optional — see note below)
 # results/*.png

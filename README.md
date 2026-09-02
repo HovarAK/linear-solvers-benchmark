@@ -41,10 +41,11 @@ Output (timing data, plots, and a written comparison) will land in `benchmarks/`
 
 ```
 linear-solvers-benchmark/
-├── src/                  # Solver implementations (SVD, QR, LU, Cholesky, gradient descent)
+├── src/                  # Solver implementations (SVD, QR, LU, gradient descent)
 ├── tests/                # pytest suite (72 tests, all passing)
 ├── benchmarks/           # (empty) scripts that will run and time each solver across datasets
-├── notebooks/            # (empty) exploration, plotting, and written analysis
+├── data/                 # raw/interim/processed datasets used for benchmarking
+├── notebooks/            # 01-download-data, 02-eda, 03-feature-prep, 04-benchmark-analysis
 └── results/              # (empty) generated plots and benchmark output
 ```
 
@@ -53,7 +54,7 @@ linear-solvers-benchmark/
 ```bash
 git clone git@github.com:HovarAK/linear-solvers-benchmark.git
 cd linear-solvers-benchmark
-python -m venv .venv && source .venv/bin/activate
+python3.12 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 pip install -r requirements-dev.txt  # pytest + notebook kernel deps
 
